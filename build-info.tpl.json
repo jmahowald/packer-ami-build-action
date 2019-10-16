@@ -1,0 +1,18 @@
+{
+    "builders": [
+      {
+        "tags": {
+          "{{.Env.INPUT_GIT_TAG_NAME}}:repo" : "{{.Env.GITHUB_REPOSITORY}}",
+          "{{.Env.INPUT_GIT_TAG_NAME}}:ref" : "{{.Env.GITHUB_REF}}",
+          "{{.Env.INPUT_GIT_TAG_NAME}}:sha" : "{{.Env.GITHUB_SHA}}"
+        }
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "{{ .Env.INPUT_TEMPLATE }}-manifest.json"
+      }
+    ]
+  
+}

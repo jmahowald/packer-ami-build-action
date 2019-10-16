@@ -1,0 +1,26 @@
+name: Packer Build
+
+on:
+  push: 
+    paths:
+    - 'test/**'
+    - '.github/**'
+    - 'packer-build/**'
+
+
+jobs:
+  packer-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./packer-build
+      id: packer_build
+      env: 
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: us-east-2
+      with: 
+        working_dir: test
+        template: ubuntu
+    - name: Get Image id
+      run: echo "The image id was ${{steps.packer_build.outputs.image_id}}"

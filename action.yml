@@ -1,0 +1,33 @@
+name: 'Packer Build'
+description: 'Builds packer jobs'
+inputs:
+  working_dir:
+    description: where to execute
+    default: .
+  git_tag_name:
+    description: The tag prefix for git/build information
+    default: git-info
+  template_name:
+    required: true
+    description: The packer job name
+  validate_only:
+    default: false
+    description: Set to "true" if you want to only validate instead of build
+  additional_info_file:
+    default: /build-info.tpl.json
+    description: |
+     This file's json temlate gets rendered with dockerize and the
+     environent, then is merged into your packer job. The default 
+     behavior is to add git-info tags and to add in a manifest
+     which can be used to more easily chain together builds.
+
+  template_file:
+    required: false
+    desription: Use if the template file isn't simply the $template_name.json in the working dir
+  
+outputs:
+  image-id:
+    description: 'the ami created'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
