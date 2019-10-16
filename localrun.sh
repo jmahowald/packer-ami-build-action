@@ -5,4 +5,4 @@
     -v ~/.aws/credentials:/root/.aws/credentials \
     -e AWS_PROFILE=$AWS_PROFILE -e INPUT_VALIDATE_ONLY=$INPUT_VALIDATE_ONLY \
     -e INPUT_TEMPLATE=ubuntu -e INPUT_WORKING_DIR=test \
-    -v $(pwd)/../test:/work/test  packer-build
+    -v $(pwd)/test:/work/test  packer-build

@@ -15,18 +15,20 @@ cat /build-info.json
 # section, but it seems to work so ¯\_(ツ)_/¯ 
 
 
-jq --argfile f1 /build-info.json \
-   --argfile f2 $TEMPLATE_FILE \
+jq --argfile f1 $TEMPLATE_FILE  \
+   --argfile f2 /build-info.json \
    -n '$f1 * ($f1."builders"[]? * $f2."builders"[]? | { "builders": [.] } )' \
-   > packer-build.json
+   > packer-build-0.json
+
+jq -s '.[0] * .[1]' /build-info.json packer-build-0.json > packer-build-1.json
 
 echo "using merged file:"
-cat packer-build.json
+cat packer-build-1.json
 
 if [ "$INPUT_VALIDATE_ONLY" == "true" ]; then
-    packer validate packer-build.json
+    packer validate packer-build-1.json
 else
-    packer build packer-build.json
+    packer build packer-build-1.json
     echo "manifest:"
     cat $INPUT_TEMPLATE-manifest.json
     # Extract the ami from the manifest.  manifest looks like

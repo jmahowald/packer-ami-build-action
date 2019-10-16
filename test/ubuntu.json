@@ -18,5 +18,11 @@
       "tags" : {
         "service" : "ami-test"
       }
-    }]
+    }],
+    "provisioners" : [
+      {
+        "type": "shell",
+        "inline": ["echo hello world"]
+      }
+    ]
   }
