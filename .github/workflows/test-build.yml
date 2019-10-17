@@ -1,9 +1,9 @@
 name: Packer Build
 on:
   push: 
-    paths:
-    - '!test/derivative*'
-    - '!.github/workflows/test-derivative.yml'
+    paths-ignore:
+    - 'test/derivative*'
+    - '.github/workflows/test-derivative.yml'
 jobs:
   packer-build:
     runs-on: ubuntu-latest
