@@ -1,9 +1,10 @@
 name: Packer Build
 
 on:
-  push: 
-  - 'test/derivative*'
-  - '.github/workflows/test-build.yml'
+  push:
+    paths:
+    - 'test/derivative*'
+    - '.github/workflows/test-build.yml'
 
 jobs:
   packer-build:
