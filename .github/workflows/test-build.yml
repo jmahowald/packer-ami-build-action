@@ -38,6 +38,5 @@ jobs:
         PULL_REQUEST_LABELS: report, automated pr
         PULL_REQUEST_ASSIGNEES: jmahowald
         PULL_REQUEST_REVIEWERS: jmahowald
-        PULL_REQUEST_MILESTONE: 1
         BRANCH_SUFFIX: short-commit-hash
 
