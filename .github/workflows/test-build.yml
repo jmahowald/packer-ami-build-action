@@ -18,6 +18,8 @@ jobs:
       with: 
         working_dir: test
         template: ubuntu
+        image_id_file: derviate-vars.json
+        image_id_variable_name: parent_image_id
     - name: Get Image id
       run: | 
         tmp=$(mktemp)
