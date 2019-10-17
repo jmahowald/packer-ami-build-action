@@ -2,7 +2,7 @@ name: Packer Build
 on:
   pull_request: 
     paths-ignore:
-    - 'test/derivative*.*'
+    - 'test/derivative**'
     - '.github/workflows/test-derivative.yml'
 jobs:
   packer-build:
