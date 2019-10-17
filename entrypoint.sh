@@ -30,7 +30,7 @@ cat packer-build-1.json
 if [ "$INPUT_VALIDATE_ONLY" == "true" ]; then
     packer validate packer-build-1.json
 else
-    if [ -n $INPUT_VAR_FILE ] && [ -f $INPUT_VAR_FILE ]; then
+    if [ ! -z "$INPUT_VAR_FILE" ] && [ -f $INPUT_VAR_FILE ]; then
         PACKER_ARGS="$PACKER_ARGS -var-file $INPUT_VAR_FILE"
     fi
     packer build $PACKER_ARGS packer-build-1.json
