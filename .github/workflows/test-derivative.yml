@@ -1,4 +1,4 @@
-name: Packer Build
+name: Packer Derivative Build
 
 on:
   push:
