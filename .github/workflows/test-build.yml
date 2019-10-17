@@ -3,7 +3,7 @@ on:
   push: 
     paths:
     - '!test/derivative*'
-    - '!.github/workflows/test-build.yml'
+    - '!.github/workflows/test-derivative.yml'
 jobs:
   packer-build:
     runs-on: ubuntu-latest
