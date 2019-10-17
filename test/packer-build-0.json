@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "099720109477"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "packer-example {{timestamp}}",
+      "tags": {
+        "service": "ami-test",
+        "git-info:repo": "jmahowald/packer-ami-build-action",
+        "git-info:ref": "refs/heads/chainchildren",
+        "git-info:sha": "3af6ed30a26943936e78e8725b6804dd8be85ddb"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo hello world"
+      ]
+    }
+  ]
+}
