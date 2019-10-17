@@ -1,7 +1,7 @@
 name: Packer Derivative Build
 
 on:
-  push:
+  pull_request:
     paths:
     - 'test/derivative*'
     - '.github/workflows/test-derivative.yml'
