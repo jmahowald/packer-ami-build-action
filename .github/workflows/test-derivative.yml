@@ -1,9 +1,10 @@
 name: Packer Build
+
 on:
   push: 
-    paths:
-    - '!test/derivative*'
-    - '!.github/workflows/test-build.yml'
+  - 'test/derivative*'
+  - '.github/workflows/test-build.yml'
+
 jobs:
   packer-build:
     runs-on: ubuntu-latest
@@ -17,9 +18,10 @@ jobs:
         AWS_DEFAULT_REGION: us-east-2
       with: 
         working_dir: test
-        template: ubuntu
+        template: derivative
+        var_file: derivative-vars.json
     - name: Get Image id
       run: | 
-        tmp=$(mktemp)
         echo "The image id was ${{steps.packer_build.outputs.image_id}}"
+        cat 
 

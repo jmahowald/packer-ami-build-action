@@ -10,9 +10,20 @@ inputs:
   template_name:
     required: true
     description: The packer job name
+  var_file:
+    required: false
+    description: a variable file to apply to the template
   validate_only:
     default: false
     description: Set to "true" if you want to only validate instead of build
+  image_id_file: 
+    description: |
+     If set will update a variable file that is intended to 
+     consumed by a downstream packer job.  Will set the image_id
+     to the variable named in `image_id_variable_name`
+  image_id_variable_name:
+    default: parent_image_id
+    description: the variable name to update .
   additional_info_file:
     default: /build-info.tpl.json
     description: |
