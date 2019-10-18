@@ -6,7 +6,7 @@ RUN curl -sfL $(curl -s https://api.github.com/repos/powerman/dockerize/releases
 WORKDIR /work
 COPY build-info.tpl.json /build-info.tpl.json
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY update-image-id.sh /update-image-id.sh
 
 
 

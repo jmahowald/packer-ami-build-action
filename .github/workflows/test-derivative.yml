@@ -1,0 +1,19 @@
+name: Packer Derivative Build
+
+on:
+  push:
+    paths:
+    - 'test/deri*'
+    - '.github/workflows/test-derivative.yml'
+jobs:
+  packer-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: why are we doing this
+      run: |
+        echo Event name is $GITHUB_EVENT_NAME
+        echo event payload is 
+        cat $GITHUB_EVENT_PATH
+
+
