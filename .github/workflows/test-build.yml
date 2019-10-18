@@ -9,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: generate random image id
+      run: |
+        image_id=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
+        cat > test/derivate-vars.json <<EOL
+        {
+          "parent_image_id": "ami-0a34edf50d75afa42",
+          "random_image_id": "$image_id"
+        }
+        EOL
     - uses: ./
       id: packer_build
       env: 
