@@ -2,26 +2,18 @@ name: Packer Derivative Build
 
 on:
   pull_request:
-    # paths:
-    # - 'test/derivative**'
-    # - '.github/workflows/test-derivative.yml'
+    paths:
+    - 'test/derivative**'
+    - '.github/workflows/test-derivative.yml'
 jobs:
   packer-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: ./
-      id: packer_build
-      env: 
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: us-east-2
-      with: 
-        working_dir: test
-        template: derivative
-        var_file: derivative-vars.json
-    - name: Get Image id
-      run: | 
-        echo "The image id was ${{steps.packer_build.outputs.image_id}}"
-        cat 
+    - name: why are we doing this
+      run: |
+        echo Event name is $GITHUB_EVENT_NAME
+        echo event payload is 
+        cat $GITHUB_EVENT_PATH
+
 
