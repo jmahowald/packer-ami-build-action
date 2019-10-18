@@ -1,0 +1,22 @@
+{
+    "variables": {
+        "parent_image_id": ""
+      },    
+    "builders": [{
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "{{user `parent_image_id`}}",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "packer-child{{timestamp}}",
+      "tags" : {
+        "service" : "ami-test"
+      }
+    }],
+    "provisioners" : [
+      {
+        "type": "shell",
+        "inline": ["echo goodbye world"]
+      }
+    ]
+  }
