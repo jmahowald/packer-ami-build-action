@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: why are we doing this
+      run: |
+        echo Event name is $GITHUB_EVENT_NAME
+        echo event payload is 
+        cat $GITHUB_EVENT_PATH
     - name: generate random image id
       run: |
         image_id=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
